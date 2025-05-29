@@ -1,0 +1,29 @@
+# macOS system files
+.DS_Store
+
+# Logs
+*.log
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Environment files
+.env
+.env.*
+
+# Misc
+*.swp
+*.bak
+*.tmp
+
+# VS Code settings
+*.code-workspace

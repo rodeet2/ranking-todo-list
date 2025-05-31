@@ -60,7 +60,7 @@ function getDragAfterElement(container, y) {
 }
 function toggleDarkMode() {
   const isDark = document.body.classList.toggle('dark-mode');
-  localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+ localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
 }
 
 window.addEventListener('DOMContentLoaded', () => {

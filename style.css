@@ -122,3 +122,10 @@ li.dragging {
 .ad1, .ad2 {
   min-width: 300px;
 }
+
+@media (max-width: 900px) {
+  .ad1,
+  .ad2 {
+    display: none !important;
+  }
+}

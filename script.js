@@ -56,3 +56,10 @@ function getDragAfterElement(container, y) {
 function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
 }
+
+document.getElementById('todo-input').addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); 
+    document.getElementById('add-btn').click(); 
+  }
+});

@@ -104,7 +104,7 @@ body.dark-mode li {
 }
 
 li.dragging {
-  opacity: 0.5;
+  opacity: 0.0;
 }
 
 .delete-btn {
@@ -117,4 +117,8 @@ li.dragging {
 
 .delete-btn:hover {
   transform: scale(1.2);
+}
+
+.ad1, .ad2 {
+  min-width: 300px;
 }

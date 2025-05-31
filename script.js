@@ -1,3 +1,4 @@
+
 const input = document.getElementById('todo-input');
 const addBtn = document.getElementById('add-btn');
 const list = document.getElementById('todo-list');
@@ -7,6 +8,7 @@ addBtn.addEventListener('click', () => {
 
   const li = createTodoItem(input.value.trim());
   list.appendChild(li);
+  saveTodo(input.value.trim());
   input.value = '';
 });
 
@@ -23,7 +25,10 @@ function createTodoItem(text) {
   li.addEventListener('dragend', () => li.classList.remove('dragging'));
 
   // Delete button
-  li.querySelector('.delete-btn').addEventListener('click', () => li.remove());
+li.querySelector('.delete-btn').addEventListener('click', () => {
+  deleteTodo(li.querySelector('span').textContent);
+  li.remove();
+});
 
   return li;
 }
@@ -54,8 +59,22 @@ function getDragAfterElement(container, y) {
   }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 function toggleDarkMode() {
-  document.body.classList.toggle('dark-mode');
+  const isDark = document.body.classList.toggle('dark-mode');
+  localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('darkMode') === 'enabled') {
+  document.body.classList.add('dark-mode');
+}
+
+  const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+  savedTodos.forEach(text => {
+    const li = createTodoItem(text);
+    list.appendChild(li);
+  });
+});
+
 
 document.getElementById('todo-input').addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
@@ -63,3 +82,16 @@ document.getElementById('todo-input').addEventListener('keydown', function(event
     document.getElementById('add-btn').click(); 
   }
 });
+
+function saveTodo(task) {
+  const todos = JSON.parse(localStorage.getItem('todos')) || [];
+  todos.push(task);
+  localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function deleteTodo(taskToRemove) {
+  const todos = JSON.parse(localStorage.getItem('todos')) || [];
+  const updated = todos.filter(task => task !== taskToRemove);
+  localStorage.setItem('todos', JSON.stringify(updated));
+}
+

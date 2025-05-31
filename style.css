@@ -104,7 +104,7 @@ body.dark-mode li {
 }
 
 li.dragging {
-  opacity: 0.0;
+  opacity: 0.4;
 }
 
 .delete-btn {
